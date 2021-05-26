@@ -14,10 +14,12 @@ public class SpawnEye : MonoBehaviour
 
     private void Update()
     {
+        /*
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             nextLevelText.SetActive(false);
         }
+        */
     }
 
     public void NewMission()

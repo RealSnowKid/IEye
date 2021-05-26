@@ -25,8 +25,10 @@ public class AR_PlaceObject : MonoBehaviour {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
+        /*
         if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             PlaceObject();
+        */
     }
 
     private void UpdatePlacementIndicator() {
@@ -53,6 +55,7 @@ public class AR_PlaceObject : MonoBehaviour {
     }
 
     public void PlaceObject() {
+        if (!placementPoseIsValid) return;
 
         int randomObj = Random.Range(0, objectToPlace.Length);
 

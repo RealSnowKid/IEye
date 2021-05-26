@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/OpenApp.unity
+    guid: a4f69acb8749f8f45a2e32833cdd5da8
+  - enabled: 1
+    path: Assets/Scenes/FindEffectsMinigame.unity
+    guid: d518c07595c836540913621d51f8a714
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:

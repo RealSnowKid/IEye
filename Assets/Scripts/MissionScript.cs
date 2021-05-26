@@ -9,6 +9,7 @@ public class MissionScript : MonoBehaviour
     public GameObject currentMission;
     public GameObject congratulationsText;
     public GameObject leaderBoard;
+    public GameObject gameUI;
 
     public SpawnEye eye;
 
@@ -43,6 +44,7 @@ public class MissionScript : MonoBehaviour
 
         if(points >= 5)
         {
+            gameUI.SetActive(false);
             leaderBoard.SetActive(true);
         }
     }
