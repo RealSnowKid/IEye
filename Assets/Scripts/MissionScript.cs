@@ -8,12 +8,15 @@ public class MissionScript : MonoBehaviour
     public GameObject textInput;
     public GameObject currentMission;
     public GameObject congratulationsText;
+    public GameObject leaderBoard;
 
     public SpawnEye eye;
 
-    public GameObject leaderBoard;
-
     public int points;
+
+    public string[] congratulationsTextList;
+
+    private string randomText;
     void Start()
     {
         leaderBoard.SetActive(false);
@@ -34,7 +37,7 @@ public class MissionScript : MonoBehaviour
             }
         } else
         {
-            Invoke("CongratulationsText", 5f);
+            Invoke("CongratulationsText", 3f);
             isCompleted = false;
         }
 
@@ -47,7 +50,7 @@ public class MissionScript : MonoBehaviour
     void CompleteMission()
     {
         points++;
-        congratulationsText.SetActive(true);
+        RandomCongratulations();
         textInput.GetComponent<TMP_InputField>().text = "";
         isCompleted = true;
         eye.NewMission();
@@ -57,5 +60,19 @@ public class MissionScript : MonoBehaviour
     void CongratulationsText()
     {
         congratulationsText.SetActive(false);
+    }
+
+    void RandomCongratulations()
+    {
+        int randNumber = Random.Range(0, congratulationsTextList.Length);
+
+        for(int i = 0; i < randNumber; i++)
+        {
+            randomText = congratulationsTextList[i];
+        }
+
+        congratulationsText.GetComponent<TMP_Text>().text = randomText;    
+        
+        congratulationsText.SetActive(true);
     }
 }
