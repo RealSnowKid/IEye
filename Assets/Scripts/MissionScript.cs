@@ -11,8 +11,12 @@ public class MissionScript : MonoBehaviour
 
     public SpawnEye eye;
 
+    public GameObject leaderBoard;
+
+    public int points;
     void Start()
     {
+        leaderBoard.SetActive(false);
         congratulationsText.SetActive(false);
         eye.NewMission();
     }
@@ -33,11 +37,16 @@ public class MissionScript : MonoBehaviour
             Invoke("CongratulationsText", 5f);
             isCompleted = false;
         }
+
+        if(points >= 5)
+        {
+            leaderBoard.SetActive(true);
+        }
     }
 
     void CompleteMission()
     {
-        print("Completed mission one");
+        points++;
         congratulationsText.SetActive(true);
         textInput.GetComponent<TMP_InputField>().text = "";
         isCompleted = true;

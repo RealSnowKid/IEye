@@ -1,33 +1,35 @@
 ﻿
+using TMPro;
 using UnityEngine;
 
 public class SpawnEye : MonoBehaviour
 {  
-    public AR_PlaceObject ar; 
+    public AR_PlaceObject ar;
+    public GameObject nextLevelText;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-
+        nextLevelText.SetActive(true);
     }
 
+    private void Update()
+    {
+        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            nextLevelText.SetActive(false);
+        }
+    }
 
     public void NewMission()
     {
         if(ar.objectAlive)
         {
-            ar.DestroyCurrentObject();
-            Invoke("NewObject", 5f);
+            ar.DestroyCurrentObject();           
         } else
         {
-            ar.PlaceObject();
+            nextLevelText.SetActive(true);
+            //ar.PlaceObject();
         }
         
-    }
-
-
-    private void NewObject()
-    {
-        ar.PlaceObject();
     }
 }
