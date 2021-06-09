@@ -16,6 +16,9 @@ public class AR_PlaceObject : MonoBehaviour {
     private bool placementPoseIsValid = false;
 
     public bool objectAlive;
+    public string eyesName;
+
+    public int numberOfEyes;
 
     void Start() {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
@@ -25,10 +28,11 @@ public class AR_PlaceObject : MonoBehaviour {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        /*
-        if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            PlaceObject();
-        */
+        if(instance != null)
+        {
+            eyesName = instance.name;
+        }
+        
     }
 
     private void UpdatePlacementIndicator() {
@@ -64,6 +68,7 @@ public class AR_PlaceObject : MonoBehaviour {
             instance = Instantiate(objectToPlace[randomObj], PlacementPose.position, PlacementPose.rotation);
             instance.transform.Rotate(new Vector3(0f, 90f, 0f));
             objectAlive = true;
+            numberOfEyes++;
         }
         else {
             instance.transform.position = PlacementPose.position;
@@ -77,10 +82,7 @@ public class AR_PlaceObject : MonoBehaviour {
         {
             Destroy(instance);
             objectAlive = false;
-        } else
-        {
-            //
-        }
-       
+        } 
     }
+
 }

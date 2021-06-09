@@ -2231,7 +2231,7 @@ MonoBehaviour:
   hasGravity: 0
   areSelectable: 1
   showLabels: 1
-  areMoveable: 1
+  areMoveable: 0
   bounds: {fileID: 241478675830269325}
   selectedObject: {fileID: 0}
 --- !u!54 &262615923205742125
