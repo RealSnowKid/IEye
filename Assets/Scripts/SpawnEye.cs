@@ -12,25 +12,16 @@ public class SpawnEye : MonoBehaviour
         nextLevelText.SetActive(true);
     }
 
-    private void Update()
-    {
-        /*
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            nextLevelText.SetActive(false);
-        }
-        */
-    }
-
     public void NewMission()
     {
         if(ar.objectAlive)
         {
-            ar.DestroyCurrentObject();           
+            ar.DestroyCurrentObject();
+
         } else
         {
             nextLevelText.SetActive(true);
-            //ar.PlaceObject();
+
         }
         
     }
