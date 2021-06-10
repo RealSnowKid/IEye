@@ -25,19 +25,14 @@ public class eyeParts : MonoBehaviour{
                 child.GetComponent<Rigidbody>().isKinematic = false;
                 child.GetComponent<Rigidbody>().useGravity = true;
             }
-        } else {
-            foreach (Transform child in transform) {
-                if (!areMoveable) {
-                    //child.GetComponent<MeshCollider>().convex = false;
-                }
-            }
         }
-
+        
         StartCoroutine(deleteBounds());
     }
 
     private IEnumerator deleteBounds() {
         yield return new WaitForSeconds(2);
+
         Destroy(bounds);
     }
 
@@ -51,7 +46,7 @@ public class eyeParts : MonoBehaviour{
         Ray gazeRay = new Ray(cam.transform.position, cam.transform.rotation * Vector3.forward);
         RaycastHit hit;
 
-        if (Physics.Raycast(gazeRay, out hit, Mathf.Infinity)) {
+        if (Physics.Raycast(gazeRay, out hit, Mathf.Infinity) ) {
             if(hit.transform.gameObject.GetComponent<eyePart>() != null) {
 
                 if (areSelectable) {
@@ -81,6 +76,11 @@ public class eyeParts : MonoBehaviour{
                             selectedObject.GetComponent<Rigidbody>().isKinematic = false;
                         }
                     }
+                }
+            } else {
+                if (selectedObject != null) {
+                    selectedObject.GetComponent<eyePart>().Deselect();
+                    selectedObject = null;
                 }
             }
         } else {

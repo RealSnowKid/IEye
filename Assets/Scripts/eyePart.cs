@@ -6,7 +6,7 @@ public class eyePart : MonoBehaviour {
     public string name;
     private Color color;
 
-    private void Start() {
+    private void Awake() {
         color = GetComponent<Renderer>().material.color;
     }
 
