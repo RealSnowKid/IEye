@@ -30,7 +30,7 @@ public class AR_PlaceObject : MonoBehaviour {
 
         if(instance != null)
         {
-            eyesName = instance.name;
+            eyesName = instance.name.Replace("(Clone)", "");
         }
         
     }
@@ -78,8 +78,15 @@ public class AR_PlaceObject : MonoBehaviour {
 
     public void DestroyCurrentObject()
     {
+
+
         if(objectAlive == true)
         {
+            GameObject selected = instance.transform.GetChild(0).GetComponent<eyeParts>().selectedObject;
+            if (selected != null) {
+                Destroy(selected);
+            }
+
             Destroy(instance);
             objectAlive = false;
         } 

@@ -24,6 +24,8 @@ public class eyeParts : MonoBehaviour{
             foreach (Transform child in transform) {
                 child.GetComponent<Rigidbody>().isKinematic = false;
                 child.GetComponent<Rigidbody>().useGravity = true;
+
+                child.GetComponent<MeshCollider>().convex = true;
             }
         }
         
@@ -68,12 +70,12 @@ public class eyeParts : MonoBehaviour{
                             UItext.GetComponent<Text>().color = Color.green;
                             selectedObject.transform.parent = cam.transform;
 
-                            selectedObject.GetComponent<Rigidbody>().isKinematic = true;
+                            if (hasGravity) selectedObject.GetComponent<Rigidbody>().isKinematic = true;
                         } else if (touch.phase == TouchPhase.Ended) {
                             UItext.GetComponent<Text>().color = Color.red;
                             selectedObject.transform.parent = transform;
 
-                            selectedObject.GetComponent<Rigidbody>().isKinematic = false;
+                            if(hasGravity) selectedObject.GetComponent<Rigidbody>().isKinematic = false;
                         }
                     }
                 }
@@ -87,6 +89,9 @@ public class eyeParts : MonoBehaviour{
             if (selectedObject != null) {
                 selectedObject.GetComponent<eyePart>().Deselect();
                 selectedObject = null;
+            }
+            if (showLabels) {
+                UItext.GetComponent<Text>().text = "";
             }
         }
         

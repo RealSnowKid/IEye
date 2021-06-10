@@ -41,7 +41,7 @@ public class MissionScript : MonoBehaviour
 
         timer.BeginTimer();
 
-        textInput.onEndEdit.AddListener(delegate { LockInput(textInput); });
+        //textInput.onEndEdit.AddListener(delegate { LockInput(textInput); });
 
     }
 
@@ -53,9 +53,21 @@ public class MissionScript : MonoBehaviour
         }
     }
 
+    bool check = false;
+
     // Update is called once per frame
     void Update()
     {
+        if(TouchScreenKeyboard.visible == true) {
+            check = true;
+        }else if(TouchScreenKeyboard.visible == false && check == true) {
+            check = false;
+
+            if (textInput.text.Length > 0) {
+                PlayMinigame();
+            }
+        }
+
         text = textInput.GetComponent<TMP_InputField>().text;
 
         // checks if player is dead
@@ -68,7 +80,7 @@ public class MissionScript : MonoBehaviour
 
 
     void PlayMinigame()
-    { 
+    {
         if (!isCompleted)
         {
             if (textInput.GetComponent<TMP_InputField>().text != "")
