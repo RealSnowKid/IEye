@@ -2245,10 +2245,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bd6679415a6e9845bf30da13064164d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasGravity: 1
-  areSelectable: 1
-  showLabels: 1
-  areMoveable: 1
+  hasGravity: 0
+  areSelectable: 0
+  showLabels: 0
+  areMoveable: 0
   bounds: {fileID: 241478675830269325}
   selectedObject: {fileID: 0}
 --- !u!54 &262615923205742125
@@ -2353,7 +2353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6721846006686509120}
   m_LocalRotation: {x: 0.51927924, y: -0.47994697, z: -0.47994697, w: 0.51927924}
-  m_LocalPosition: {x: 0.45240974, y: 0.3686657, z: -0.106933594}
+  m_LocalPosition: {x: 0.714, y: 0.906, z: -0.107}
   m_LocalScale: {x: 0.52871, y: 0.52871, z: 0.52871}
   m_Children: []
   m_Father: {fileID: 1147474625767392091}
@@ -2371,8 +2371,8 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.33
-  m_Range: 9.552676
+  m_Intensity: 0.21
+  m_Range: 2.09
   m_SpotAngle: 111.629776
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2383,7 +2383,7 @@ Light:
     m_Strength: 1
     m_Bias: 0.05
     m_NormalBias: 0.4
-    m_NearPlane: 0.2
+    m_NearPlane: 0.1
     m_CullingMatrixOverride:
       e00: 1
       e01: 0
@@ -3106,6 +3106,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 701b51b91cb8b4645955d5095a9e7e42, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 10596e0f40166e94086d988c511891bf, type: 2}
     - target: {fileID: 919132149155446097, guid: 701b51b91cb8b4645955d5095a9e7e42, type: 3}
       propertyPath: m_Name
       value: conjunctiva

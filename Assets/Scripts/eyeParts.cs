@@ -16,7 +16,16 @@ public class eyeParts : MonoBehaviour{
     public GameObject selectedObject;
     Transform eye = null;
 
-    private void Start() {
+    public void StartManual(bool gravity, bool selectable, bool labels, bool move) {
+        hasGravity = gravity;
+        areSelectable = selectable;
+        showLabels = labels;
+        areMoveable = move;
+
+        Begin();
+    }
+
+    private void Begin() {
         cam = GameObject.Find("AR Camera");
         UItext = GameObject.Find("SelectedObject");
 

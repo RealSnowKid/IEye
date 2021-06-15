@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 //using UnityEngine.Experimental.XR
 using UnityEngine.XR.ARSubsystems;
+using UnityEngine.UI;
 
 
 public class AR_PlaceObject : MonoBehaviour {
@@ -20,6 +21,11 @@ public class AR_PlaceObject : MonoBehaviour {
 
     public int numberOfEyes;
 
+    public bool hasGravity;
+    public bool areSelectable;
+    public bool showLabels;
+    public bool areMoveable;
+
     void Start() {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
@@ -28,7 +34,7 @@ public class AR_PlaceObject : MonoBehaviour {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if(instance != null)
+        if (instance != null)
         {
             eyesName = instance.name.Replace("(Clone)", "");
         }
@@ -69,6 +75,8 @@ public class AR_PlaceObject : MonoBehaviour {
             instance.transform.Rotate(new Vector3(0f, 90f, 0f));
             objectAlive = true;
             numberOfEyes++;
+
+            instance.transform.GetChild(0).GetComponent<eyeParts>().StartManual(hasGravity, areSelectable, showLabels, areMoveable);
         }
         else {
             instance.transform.position = PlacementPose.position;

@@ -40,9 +40,6 @@ public class MissionScript : MonoBehaviour
         eye.NewMission();
 
         timer.BeginTimer();
-
-        //textInput.onEndEdit.AddListener(delegate { LockInput(textInput); });
-
     }
 
     void LockInput(TMP_InputField input)
@@ -93,6 +90,8 @@ public class MissionScript : MonoBehaviour
                 {
                     FailMission();
                 }
+
+                textInput.GetComponent<TMP_InputField>().text = "";
             }
         }
 
