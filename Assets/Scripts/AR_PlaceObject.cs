@@ -12,10 +12,6 @@ public class AR_PlaceObject : MonoBehaviour {
 
     private GameObject instance = null;
 
-    private Pose PlacementPose;
-    private ARRaycastManager aRRaycastManager;
-    private bool placementPoseIsValid = false;
-
     public bool objectAlive;
     public string eyesName;
 
@@ -28,45 +24,13 @@ public class AR_PlaceObject : MonoBehaviour {
 
     public bool diseases = false;
 
-    void Start() {
-        aRRaycastManager = FindObjectOfType<ARRaycastManager>();
-    }
-
-    void Update() {
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
-    }
-
-    private void UpdatePlacementIndicator() {
-        if (placementPoseIsValid) {
-            placementIndicator.SetActive(true);
-            placementIndicator.transform.SetPositionAndRotation(PlacementPose.position, PlacementPose.rotation);
-            placementIndicator.transform.Rotate(new Vector3(90f, 0f, 0f));
-        } else
-            placementIndicator.SetActive(false);
-    }
-
-    private void UpdatePlacementPose() {
-        var screenCenter = Camera.main.ViewportToScreenPoint(new Vector3(0.5f, 0.5f));
-        var hits = new List<ARRaycastHit>();
-        aRRaycastManager.Raycast(screenCenter, hits, TrackableType.Planes);
-
-        placementPoseIsValid = hits.Count > 0;
-        if (placementPoseIsValid) {
-            PlacementPose = hits[0].pose;
-            var cameraForward = Camera.current.transform.forward;
-            var cameraBearing = new Vector3(cameraForward.x, 0f, cameraForward.z).normalized;
-            PlacementPose.rotation = Quaternion.LookRotation(cameraBearing);
-        }
-    }
-
     public void PlaceObject() {
-        if (!placementPoseIsValid) return;
-
         if (instance == null)
         {
-            instance = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+            instance = Instantiate(objectToPlace, Camera.main.transform.position, Quaternion.identity);
             instance.transform.Rotate(new Vector3(0f, 90f, 0f));
+            instance.transform.Translate(new Vector3(0f, -.25f, 0f));
+
             objectAlive = true;
             numberOfEyes++;
 
@@ -79,18 +43,17 @@ public class AR_PlaceObject : MonoBehaviour {
                 dis.SetActive(true);
 
                 instance.name = dis.name;
+                eyesName = instance.name;
             }
         }
         else {
-            instance.transform.position = PlacementPose.position;
-            instance.transform.rotation = PlacementPose.rotation;
+            instance.transform.position = Camera.main.transform.position;
+            instance.transform.Translate(new Vector3(0f, -.25f, 0f));
         }
     }
 
     public void DestroyCurrentObject()
     {
-
-
         if(objectAlive == true)
         {
             GameObject selected = instance.transform.GetChild(0).GetComponent<eyeParts>().selectedObject;
@@ -103,4 +66,31 @@ public class AR_PlaceObject : MonoBehaviour {
         } 
     }
 
+    public void ScaleUp() {
+        AlterScale(.02f);
+    }
+
+    public void ScaleDown() {
+        AlterScale(-.02f);
+    }
+
+    public void RotateLeft() {
+        RotateInstance(20f);
+    }
+
+    public void RotateRight() {
+        RotateInstance(-20f);
+    }
+
+    private void AlterScale(float amount) {
+        if (instance == null) return;
+
+        instance.transform.localScale += new Vector3(amount, amount, amount);
+    }
+
+    private void RotateInstance(float amount) {
+        if (instance == null) return;
+
+        instance.transform.Rotate(new Vector3(0f, amount, 0f));
+    }
 }

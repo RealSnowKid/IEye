@@ -154,7 +154,7 @@ public class MissionScript : MonoBehaviour
     // player wins the minigame, goes to leaderboard
     void WinMinigame()
     {
-        if (ar.numberOfEyes >= replay)
+        if (ar.numberOfEyes > replay)
         {
             timer.EndTimer();
             WinningGameBonusPoints();
