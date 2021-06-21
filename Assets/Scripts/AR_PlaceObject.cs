@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 
 public class AR_PlaceObject : MonoBehaviour {
-    public GameObject[] objectToPlace;
+    public GameObject objectToPlace;
     public GameObject placementIndicator;
 
     private GameObject instance = null;
@@ -26,6 +26,8 @@ public class AR_PlaceObject : MonoBehaviour {
     public bool showLabels;
     public bool areMoveable;
 
+    public bool diseases = false;
+
     void Start() {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
     }
@@ -33,12 +35,6 @@ public class AR_PlaceObject : MonoBehaviour {
     void Update() {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
-
-        if (instance != null)
-        {
-            eyesName = instance.name.Replace("(Clone)", "");
-        }
-        
     }
 
     private void UpdatePlacementIndicator() {
@@ -67,16 +63,23 @@ public class AR_PlaceObject : MonoBehaviour {
     public void PlaceObject() {
         if (!placementPoseIsValid) return;
 
-        int randomObj = Random.Range(0, objectToPlace.Length);
-
         if (instance == null)
         {
-            instance = Instantiate(objectToPlace[randomObj], PlacementPose.position, PlacementPose.rotation);
+            instance = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
             instance.transform.Rotate(new Vector3(0f, 90f, 0f));
             objectAlive = true;
             numberOfEyes++;
 
             instance.transform.GetChild(0).GetComponent<eyeParts>().StartManual(hasGravity, areSelectable, showLabels, areMoveable);
+
+            if (diseases) {
+                int rng = Random.Range(0, 2);
+
+                GameObject dis = instance.transform.GetChild(1).GetChild(rng).gameObject;
+                dis.SetActive(true);
+
+                instance.name = dis.name;
+            }
         }
         else {
             instance.transform.position = PlacementPose.position;
