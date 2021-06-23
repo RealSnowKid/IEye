@@ -15,11 +15,17 @@ public class eyeParts : MonoBehaviour{
     public GameObject selectedObject;
     Transform eye = null;
 
+    public bool hasShadow = false;
+
     public void StartManual(bool gravity, bool selectable, bool labels, bool move) {
         hasGravity = gravity;
         areSelectable = selectable;
         showLabels = labels;
         areMoveable = move;
+
+        if (hasShadow) {
+            transform.parent.GetChild(2).gameObject.SetActive(true);
+        }
 
         Begin();
     }

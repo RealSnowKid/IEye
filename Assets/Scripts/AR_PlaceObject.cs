@@ -23,6 +23,8 @@ public class AR_PlaceObject : MonoBehaviour {
     public bool areMoveable;
 
     public bool diseases = false;
+    public bool shadow = false;
+
 
     public void PlaceObject() {
         if (instance == null)
@@ -34,7 +36,14 @@ public class AR_PlaceObject : MonoBehaviour {
             objectAlive = true;
             numberOfEyes++;
 
+
+            instance.transform.GetChild(0).GetComponent<eyeParts>().hasShadow = shadow;
             instance.transform.GetChild(0).GetComponent<eyeParts>().StartManual(hasGravity, areSelectable, showLabels, areMoveable);
+
+            if (shadow) {
+                gameObject.GetComponent<EyePartsMinigame>().shadow = instance.transform.GetChild(2).gameObject;
+                instance.transform.GetChild(2).GetComponent<EyeShadow>().minigame = gameObject.GetComponent<EyePartsMinigame>();
+            }
 
             if (diseases) {
                 int rng = Random.Range(0, 2);
