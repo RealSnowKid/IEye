@@ -1,0 +1,64 @@
+    {
+      "parts": [
+        {
+          "sclera": "",
+          "choroid": "",
+          "retina": "",
+          "cornea": "",
+          "aqueous_humor": "",
+          "pupil": "",
+          "iris": "",
+          "lens": "",
+          "suspensory_ligament": "",
+          "ciliary_body": "",
+          "vitreous_humour": "",
+          "optic_nerver": "",
+          "macula": ""
+        },
+        {
+          "sclera": "Harde Oogrok",
+          "choroid": "Vaatvlies",
+          "retina": "Netvlies",
+          "cornea": "Hoornvlies",
+          "aqueous_humor": "Kamervocht",
+          "pupil": "Oogappel",
+          "iris": "Regenboogvlies",
+          "lens": "Ooglens",
+          "suspensory_ligament": "Zonula van Zinn",
+          "ciliary_body": "Straalvormig Lichaam",
+          "vitreous_humour": "Glasachtig Lichaam",
+          "optic_nerver": "Oogzenuw",
+          "macula": "Gele Vlek"
+        },
+        {
+          "sclera": "Sclera",
+          "choroid": "Choroidea",
+          "retina": "Rete",
+          "cornea": "Cornea",
+          "aqueous_humor": "Humor Aquosus",
+          "pupil": "Pupilla",
+          "iris": "Iris",
+          "lens": "Lens Crystallin",
+          "suspensory_ligament": "Zonula Ciliaris",
+          "ciliary_body": "Corpus Ciliare",
+          "vitreous_humour": "Humor Vitreum",
+          "optic_nerver": "Nervus Opticus",
+          "macula": "Macula Lutea"
+        },
+        {
+          "sclera": "Sclera",
+          "choroid": "Choroid",
+          "retina": "Retina",
+          "cornea": "Cornea",
+          "aqueous_humor": "Aqueous humor",
+          "pupil": "Pupil",
+          "iris": "Iris",
+          "lens": "Lens",
+          "suspensory_ligament": "Suspensory Ligament",
+          "ciliary_body": "Ciliary Body",
+          "vitreous_humour": "Vitreous Humor",
+          "optic_nerver": "Optic Nerve",
+          "macula": "Macula"
+        }
+      ]
+    }

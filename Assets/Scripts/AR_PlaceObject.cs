@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 //using UnityEngine.Experimental.XR
-
 using UnityEngine.XR.ARSubsystems;
-using System;
+
 
 public class AR_PlaceObject : MonoBehaviour {
-    public GameObject objectToPlace;
+    public GameObject[] objectToPlace;
     public GameObject placementIndicator;
 
     private GameObject instance = null;
@@ -16,6 +14,11 @@ public class AR_PlaceObject : MonoBehaviour {
     private Pose PlacementPose;
     private ARRaycastManager aRRaycastManager;
     private bool placementPoseIsValid = false;
+
+    public bool objectAlive;
+    public string eyesName;
+
+    public int numberOfEyes;
 
     void Start() {
         aRRaycastManager = FindObjectOfType<ARRaycastManager>();
@@ -25,8 +28,11 @@ public class AR_PlaceObject : MonoBehaviour {
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if(placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            PlaceObject();
+        if(instance != null)
+        {
+            eyesName = instance.name.Replace("(Clone)", "");
+        }
+        
     }
 
     private void UpdatePlacementIndicator() {
@@ -52,12 +58,38 @@ public class AR_PlaceObject : MonoBehaviour {
         }
     }
 
-    private void PlaceObject() {
+    public void PlaceObject() {
+        if (!placementPoseIsValid) return;
+
+        int randomObj = Random.Range(0, objectToPlace.Length);
+
         if (instance == null)
-            instance = Instantiate(objectToPlace, PlacementPose.position, PlacementPose.rotation);
+        {
+            instance = Instantiate(objectToPlace[randomObj], PlacementPose.position, PlacementPose.rotation);
+            instance.transform.Rotate(new Vector3(0f, 90f, 0f));
+            objectAlive = true;
+            numberOfEyes++;
+        }
         else {
             instance.transform.position = PlacementPose.position;
             instance.transform.rotation = PlacementPose.rotation;
         }
     }
+
+    public void DestroyCurrentObject()
+    {
+
+
+        if(objectAlive == true)
+        {
+            GameObject selected = instance.transform.GetChild(0).GetComponent<eyeParts>().selectedObject;
+            if (selected != null) {
+                Destroy(selected);
+            }
+
+            Destroy(instance);
+            objectAlive = false;
+        } 
+    }
+
 }
