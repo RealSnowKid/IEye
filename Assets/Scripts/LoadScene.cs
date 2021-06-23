@@ -16,21 +16,11 @@ public class LoadScene : MonoBehaviour
 
     private void Start()
     {
-        Button btn = myButton.GetComponent<Button>();
-        btn.onClick.AddListener(LoadNextScene);
-
-        Button contextButton = openContextMenu.GetComponent<Button>();
-        contextButton.onClick.AddListener(ToggleContext);
-
-        normalButton.GetComponent<Button>().onClick.AddListener(LoadNormalScene);
-        moveButton.GetComponent<Button>().onClick.AddListener(LoadMoveScene);
-        gravityButton.GetComponent<Button>().onClick.AddListener(LoadGravityScene);
-        exitButton.GetComponent<Button>().onClick.AddListener(ToggleContext);
     }
 
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
     }
 
     public void ToggleContext() {

@@ -13,6 +13,9 @@ public class EyePartsMinigame : MonoBehaviour {
     public int scoreWin;
     public int scoreLose;
 
+    public GameObject leaderBoard;
+    public GameObject gameUI;
+
     private List<string> parts = new List<string>() { "Anterior Pole", "Choroid", "Ciliary Zonule", "Endotheel", "Descemet's layer", "Stroma", "Bowman's layer", "Epitheel", "Anterior segment", "Fovea centralis", "Iris", "Lens", "Macula lutea", "Optic nerve", "Ora seratta", "Retina", "Sclera", "Scleral venous sinus", "Veins", "Vitreous humor", "Conjunctiva" };
     private int partsLenght;
 
@@ -22,20 +25,31 @@ public class EyePartsMinigame : MonoBehaviour {
         NextItem();
     }
 
-    private void NextItem() {
+    private void Update()
+    {
         partsLenght = parts.Count;
+        WinMinigame();
+    }
 
-        if(partsLenght == 0) {
+    private void WinMinigame()
+    {
+        // Placeholder for now so we can test in unity
+        if(score >= 10)
+        {
             FinishMinigame();
-        } else {
-            rng = Random.Range(0, partsLenght - 1);
-            nextPart.text = parts[rng];
-            parts.RemoveAt(rng);
         }
     }
 
-    private void FinishMinigame() {
+    private void NextItem() { 
+        rng = Random.Range(0, partsLenght - 1);
+        nextPart.text = parts[rng];
+        parts.RemoveAt(rng);
+    }
 
+    private void FinishMinigame() {
+        gameUI.SetActive(false);
+        leaderBoard.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     public void CheckObject(GameObject obj) {
