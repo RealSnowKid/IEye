@@ -587,7 +587,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Auditief Minigame
+  m_Text: Auditory Minigame
 --- !u!222 &549512407
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Instellingen
+  m_Text: Settings
 --- !u!222 &624259455
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1330367347}
   m_OnClick:
     m_PersistentCalls:
@@ -2035,7 +2035,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Leer Modus
+  m_Text: Learning Mode
 --- !u!222 &1749263720
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2114,7 +2114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Zet het oog in elkaar
+  m_Text: Kinesthetic Minigame
 --- !u!222 &1777736746
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2661,7 +2661,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Visuele Minigame
+  m_Text: Visual Minigame
 --- !u!222 &2084941137
 CanvasRenderer:
   m_ObjectHideFlags: 0

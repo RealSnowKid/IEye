@@ -8,6 +8,7 @@ public class eyeParts : MonoBehaviour{
 
     public bool showLabels;
     public bool areMoveable;
+
     [SerializeField] GameObject bounds;
     private GameObject cam;
     private GameObject UItext;
@@ -15,29 +16,24 @@ public class eyeParts : MonoBehaviour{
     public GameObject selectedObject;
     Transform eye = null;
 
-    public bool hasShadow = false;
-
     public void StartManual(bool gravity, bool selectable, bool labels, bool move) {
         hasGravity = gravity;
         areSelectable = selectable;
         showLabels = labels;
         areMoveable = move;
 
-        if (hasShadow) {
-            transform.parent.GetChild(2).gameObject.SetActive(true);
-        }
-
         Begin();
     }
-   
+
     private void Begin() {
         cam = GameObject.Find("AR Camera");
         UItext = GameObject.Find("SelectedObject");
+
         if (hasGravity) {
             foreach (Transform child in transform) {
                 child.GetComponent<Rigidbody>().isKinematic = false;
                 child.GetComponent<Rigidbody>().useGravity = true;
-                
+
                 child.GetComponent<MeshCollider>().convex = true;
             }
         }
@@ -50,7 +46,7 @@ public class eyeParts : MonoBehaviour{
 
         Destroy(bounds);
     }
- 
+
     public void Update() {
         if (!areSelectable) {
             if (showLabels || areMoveable)
@@ -108,21 +104,5 @@ public class eyeParts : MonoBehaviour{
             }
         }
         
-    }
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("shadow"))
-        {
-            selectedObject.GetComponent<Rigidbody>().mass = 0; // This can be changed to whatever you want, this is if you want the mass changed;
-            selectedObject.GetComponent<Rigidbody>().useGravity = false; // This is if you want to turn the gravity off;
-            selectedObject.GetComponent<Rigidbody>().isKinematic = true;
-           // selectedObject.GetComponent<eyePart>().Deselect();
-        }    
-    }
-    void OnTriggerExit(Collider other)
-    {
-        selectedObject.GetComponent<Rigidbody>().mass = 1; // Back to normal here using mass;
-        selectedObject.GetComponent<Rigidbody>().useGravity = true; // This is if you want the gravity to be turned back on;
-          //selectedObject.GetComponent<eyePart>().Select();
     }
 }
