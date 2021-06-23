@@ -12,6 +12,7 @@ public class LeaderBoardScript : MonoBehaviour
     public TMP_Text usernameLeaderboard;
     public TMP_Text scoreLeaderboard;
     public MissionScript missionScript;
+    public EyePartsMinigame eyePartsMinigame;
 
     public GameObject askNameMenu;
     public Button buttonQuitLeaderBoard;
@@ -62,7 +63,13 @@ public class LeaderBoardScript : MonoBehaviour
     private void FinalizeScore(string name)
     {
         usernameLeaderboard.text = name;
-        scoreLeaderboard.text = "" + missionScript.score;
+        if(missionScript != null)
+        {
+            scoreLeaderboard.text = "" + missionScript.score;
+        } else
+        {
+            scoreLeaderboard.text = "" + eyePartsMinigame.score;
+        }
         ClosePopUp();
     }
 

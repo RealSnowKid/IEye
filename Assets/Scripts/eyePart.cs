@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class eyePart : MonoBehaviour {
-    public string PartName;
+    public string name;
     private Color color;
 
     private void Awake() {

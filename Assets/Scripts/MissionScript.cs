@@ -18,6 +18,7 @@ public class MissionScript : MonoBehaviour
     public Player player;
     public AR_PlaceObject ar;
     public TimerScript timer;
+    public int replay = 3;
 
     [HideInInspector]
     public bool isCompleted;
@@ -40,9 +41,6 @@ public class MissionScript : MonoBehaviour
         eye.NewMission();
 
         timer.BeginTimer();
-
-        //textInput.onEndEdit.AddListener(delegate { LockInput(textInput); });
-
     }
 
     void LockInput(TMP_InputField input)
@@ -93,6 +91,8 @@ public class MissionScript : MonoBehaviour
                 {
                     FailMission();
                 }
+
+                textInput.GetComponent<TMP_InputField>().text = "";
             }
         }
 
@@ -154,8 +154,7 @@ public class MissionScript : MonoBehaviour
     // player wins the minigame, goes to leaderboard
     void WinMinigame()
     {
-        //points >= 5
-        if (ar.numberOfEyes >= ar.objectToPlace.Length)
+        if (ar.numberOfEyes > replay)
         {
             timer.EndTimer();
             WinningGameBonusPoints();

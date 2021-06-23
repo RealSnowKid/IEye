@@ -5,18 +5,27 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/OpenApp.unity
     guid: a4f69acb8749f8f45a2e32833cdd5da8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/FindEffectsMinigame.unity
     guid: d518c07595c836540913621d51f8a714
-  - enabled: 1
-    path: Assets/Scenes/ExploreModel.unity
-    guid: 54d5ad7d51c66c94ba25871589307325
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/Normal_Eye.unity
+    guid: c52c87053053c4442952c33d96b7f7de
+  - enabled: 0
+    path: Assets/Scenes/Move_Eye.unity
+    guid: 0b627cd50b0adfe42843bb7b0a459ca1
+  - enabled: 0
+    path: Assets/Scenes/Gravity_Eye.unity
+    guid: 25e77a6a7be1c0047a4852666769e49f
+  - enabled: 1
+    path: Assets/Scenes/EyeParts.unity
+    guid: 8dfb9e87a77dd894290725e88ab21f0f
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 4db7d96a490a1dd469d64576c20d27e5, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: dbc0b651780d1cc4cb30765251a4b504, type: 2}
