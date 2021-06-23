@@ -14,6 +14,8 @@ public class MissionScript : MonoBehaviour
     public GameObject gameOverUI;
     public GameObject gameOverText;
 
+    //public GameObject SkipButton;
+
     public SpawnEye eye;
     public Player player;
     public AR_PlaceObject ar;
