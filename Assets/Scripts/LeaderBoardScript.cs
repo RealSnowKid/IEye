@@ -22,6 +22,7 @@ public class LeaderBoardScript : MonoBehaviour
     public TMP_InputField userInputField;
     public GameObject warningMsg;
     public MissionScript missionScript;
+    public EyePartsMinigame eyeScript;
 
     public GameObject Info;
     public GameObject LeaderboardLines;
@@ -36,6 +37,8 @@ public class LeaderBoardScript : MonoBehaviour
 
     public string username;
 
+    private int leaderboardScore;
+
     private void Start()
     {
         Button btnAnon = btnClose.GetComponent<Button>();
@@ -47,7 +50,17 @@ public class LeaderBoardScript : MonoBehaviour
 
     private void Update()
     {
-        YourPoints.text = missionScript.score.ToString();
+        if(missionScript != null)
+        {
+            YourPoints.text = missionScript.score.ToString();
+            leaderboardScore = missionScript.score;
+        }
+        else
+        {
+            YourPoints.text = eyeScript.score.ToString();
+            leaderboardScore = eyeScript.score;
+        }
+        
         if (askNameMenu.activeInHierarchy)
         {
             buttonQuitLeaderBoard.interactable = false;
@@ -55,6 +68,8 @@ public class LeaderBoardScript : MonoBehaviour
         {
             buttonQuitLeaderBoard.interactable = true;
         }
+
+        
     }
 
     IEnumerator GetLeaderboards()
@@ -122,8 +137,10 @@ public class LeaderBoardScript : MonoBehaviour
         Score sendScore = new Score
         {
             name = username,
-            score = missionScript.score
+            score = leaderboardScore
         };
+
+        
 
         string jsonData = JsonUtility.ToJson(sendScore);
 

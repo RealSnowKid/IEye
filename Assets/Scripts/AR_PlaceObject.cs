@@ -78,8 +78,6 @@ public class AR_PlaceObject : MonoBehaviour {
 
     public void DestroyCurrentObject()
     {
-
-
         if(objectAlive == true)
         {
             GameObject selected = instance.transform.GetChild(0).GetComponent<eyeParts>().selectedObject;

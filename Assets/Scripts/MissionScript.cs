@@ -11,12 +11,9 @@ public class MissionScript : MonoBehaviour
     public GameObject failureText;
     public GameObject leaderBoard;
     public GameObject gameUI;
-    public GameObject gameOverUI;
-    public GameObject gameOverText;
 
     public SpawnEye eye;
-    public Player player;
-    public AR_PlaceObject ar;
+     public AR_PlaceObject ar;
     public TimerScript timer;
     public int replay = 3;
 
@@ -28,16 +25,14 @@ public class MissionScript : MonoBehaviour
     public string[] congratulationsTextList;
 
     private string randomText;
-    private int damage = 1;
     private string text;
 
     void Start()
     {
-        gameOverText.SetActive(false);
+
         leaderBoard.SetActive(false);
         congratulationsText.SetActive(false);
         failureText.SetActive(false);
-        gameOverUI.SetActive(false);
         eye.NewMission();
 
         timer.BeginTimer();
@@ -67,9 +62,6 @@ public class MissionScript : MonoBehaviour
         }
 
         text = textInput.GetComponent<TMP_InputField>().text;
-
-        // checks if player is dead
-        GameOver();
 
         // win minigame, show leaderboard
         WinMinigame();
@@ -111,7 +103,7 @@ public class MissionScript : MonoBehaviour
     void FailMission()
     {
         FailureText();
-        player.DoDamage(damage);
+        score--;
         Invoke("ActivateFailureText", 2f);
     }
 
@@ -164,24 +156,6 @@ public class MissionScript : MonoBehaviour
         }
     }
 
-    // player is dead, game over. Starts from menu screen
-    void GameOver()
-    {
-        if(!player.isAlive)
-        {
-            textInput.GetComponent<TMP_InputField>().interactable = false;
-            gameOverText.SetActive(true);
-            Invoke("PlayerDeath", 6f);
-        }
-    }
-
-    // if the player runs out of health, game over
-    void PlayerDeath()
-    {
-        gameOverText.SetActive(false);
-        gameUI.SetActive(false);
-        gameOverUI.SetActive(true);
-    }
 
     // awards the player bonus points for finishing the game in a certain time
     void WinningGameBonusPoints()
