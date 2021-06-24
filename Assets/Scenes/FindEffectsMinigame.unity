@@ -1247,9 +1247,9 @@ MonoBehaviour:
   numberOfEyes: 0
   hasGravity: 0
   areSelectable: 0
-  showLabels: 0
+  showLabels: 1
   areMoveable: 0
-  diseases: 0
+  diseases: 1
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
