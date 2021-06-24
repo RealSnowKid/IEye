@@ -1240,14 +1240,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba88f6d3ad8c12b40bc65ca3e222ba43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectToPlace:
-  - {fileID: 6721767103676791658, guid: 845eaf93d507cde4285b1b263c9fdfd4, type: 3}
-  - {fileID: 6721767103676791658, guid: 845eaf93d507cde4285b1b263c9fdfd4, type: 3}
-  - {fileID: 6721767103676791658, guid: 845eaf93d507cde4285b1b263c9fdfd4, type: 3}
+  objectToPlace: {fileID: 6721767103676791658, guid: 845eaf93d507cde4285b1b263c9fdfd4, type: 3}
   placementIndicator: {fileID: 5578477065194669222}
   objectAlive: 0
   eyesName: as
   numberOfEyes: 0
+  hasGravity: 0
+  areSelectable: 0
+  showLabels: 0
+  areMoveable: 0
+  diseases: 0
 --- !u!4 &223974228
 Transform:
   m_ObjectHideFlags: 0
