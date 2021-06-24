@@ -22,7 +22,7 @@ public class LeaderBoardScript : MonoBehaviour
     public TMP_InputField userInputField;
     public GameObject warningMsg;
     public MissionScript missionScript;
-    public EyePartsMinigame eyeScript;
+    public EyePartsMinigameEye eyeScript;
 
     public GameObject Info;
     public GameObject LeaderboardLines;
@@ -139,7 +139,6 @@ public class LeaderBoardScript : MonoBehaviour
             name = username,
             score = leaderboardScore
         };
-
         
 
         string jsonData = JsonUtility.ToJson(sendScore);

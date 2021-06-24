@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EyeShadow : MonoBehaviour {
-    public EyePartsMinigame minigame;
+    public EyePartsMinigameEye minigame;
     private GameObject prevObject = null;
 
     private void OnTriggerEnter(Collider other) {

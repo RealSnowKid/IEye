@@ -13,7 +13,7 @@ public class MissionScript : MonoBehaviour
     public GameObject gameUI;
 
     public SpawnEye eye;
-     public AR_PlaceObject ar;
+    public AR_PlaceObjectEye ar;
     public TimerScript timer;
     public int replay = 3;
 
