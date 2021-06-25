@@ -6,8 +6,7 @@ using UnityEngine.XR.ARSubsystems;
 using UnityEngine.UI;
 
 
-public class AR_PlaceObject : MonoBehaviour
-{
+public class AR_PlaceObject : MonoBehaviour {
     public GameObject objectToPlace;
     public GameObject placementIndicator;
 
@@ -24,11 +23,15 @@ public class AR_PlaceObject : MonoBehaviour
     public bool areMoveable;
 
     public bool diseases = false;
+    public bool shadow = false;
 
-    public void PlaceObject()
-    {
-        if (instance == null)
-        {
+    private void Start() {
+        PlaceObject();
+    }
+
+
+    public void PlaceObject() {
+        if (instance == null) {
             instance = Instantiate(objectToPlace, Camera.main.transform.position, Quaternion.identity);
             instance.transform.Rotate(new Vector3(0f, 90f, 0f));
             instance.transform.Translate(new Vector3(0f, -.25f, 0f));
@@ -36,10 +39,16 @@ public class AR_PlaceObject : MonoBehaviour
             objectAlive = true;
             numberOfEyes++;
 
+
+            instance.transform.GetChild(0).GetComponent<eyeParts>().hasShadow = shadow;
             instance.transform.GetChild(0).GetComponent<eyeParts>().StartManual(hasGravity, areSelectable, showLabels, areMoveable);
 
-            if (diseases)
-            {
+            if (shadow) {
+                gameObject.GetComponent<EyePartsMinigame>().shadow = instance.transform.GetChild(2).gameObject;
+                instance.transform.GetChild(2).GetComponent<EyeShadow>().minigame = gameObject.GetComponent<EyePartsMinigameEye>();
+            }
+
+            if (diseases) {
                 int rng = Random.Range(0, 2);
 
                 GameObject dis = instance.transform.GetChild(1).GetChild(rng).gameObject;
@@ -48,21 +57,16 @@ public class AR_PlaceObject : MonoBehaviour
                 instance.name = dis.name;
                 eyesName = instance.name;
             }
-        }
-        else
-        {
+        } else {
             instance.transform.position = Camera.main.transform.position;
             instance.transform.Translate(new Vector3(0f, -.25f, 0f));
         }
     }
 
-    public void DestroyCurrentObject()
-    {
-        if (objectAlive == true)
-        {
+    public void DestroyCurrentObject() {
+        if (objectAlive == true) {
             GameObject selected = instance.transform.GetChild(0).GetComponent<eyeParts>().selectedObject;
-            if (selected != null)
-            {
+            if (selected != null) {
                 Destroy(selected);
             }
 
@@ -71,35 +75,29 @@ public class AR_PlaceObject : MonoBehaviour
         }
     }
 
-    public void ScaleUp()
-    {
+    public void ScaleUp() {
         AlterScale(.02f);
     }
 
-    public void ScaleDown()
-    {
+    public void ScaleDown() {
         AlterScale(-.02f);
     }
 
-    public void RotateLeft()
-    {
+    public void RotateLeft() {
         RotateInstance(20f);
     }
 
-    public void RotateRight()
-    {
+    public void RotateRight() {
         RotateInstance(-20f);
     }
 
-    private void AlterScale(float amount)
-    {
+    private void AlterScale(float amount) {
         if (instance == null) return;
 
         instance.transform.localScale += new Vector3(amount, amount, amount);
     }
 
-    private void RotateInstance(float amount)
-    {
+    private void RotateInstance(float amount) {
         if (instance == null) return;
 
         instance.transform.Rotate(new Vector3(0f, amount, 0f));

@@ -27,7 +27,6 @@ public class EyePartsMinigameEye : MonoBehaviour {
 
     private void Update()
     {
-        partsLenght = parts.Count;
         WinMinigame();
     }
 
@@ -40,8 +39,9 @@ public class EyePartsMinigameEye : MonoBehaviour {
         }
     }
 
+    //TODO FIX
     private void NextItem() { 
-        rng = Random.Range(0, partsLenght - 1);
+        rng = Random.Range(0, parts.Count - 1);
         nextPart.text = parts[rng];
         parts.RemoveAt(rng);
     }
@@ -53,11 +53,11 @@ public class EyePartsMinigameEye : MonoBehaviour {
     }
 
     public void CheckObject(GameObject obj) {
-        if(obj.GetComponent<eyePart>().name == nextPart.text) {
+        if(obj.GetComponent<eyePart>().name == nextPart.text.ToLower()) {
             score += scoreWin;
 
             Destroy(obj);
-            shadow.transform.GetChild(rng).gameObject.SetActive(true);
+            shadow.transform.Find(nextPart.text.ToLower()).gameObject.SetActive(true);
             NextItem();
         } else {
             score -= scoreLose;

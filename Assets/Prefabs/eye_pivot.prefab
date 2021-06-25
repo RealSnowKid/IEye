@@ -1848,7 +1848,7 @@ GameObject:
   - component: {fileID: 4810150367569196160}
   - component: {fileID: 4170523183568915081}
   m_Layer: 0
-  m_Name: sclera/posterior pole
+  m_Name: sclera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3305,6 +3305,7 @@ MonoBehaviour:
   bounds: {fileID: 241478675830269325}
   selectedObject: {fileID: 0}
   hasShadow: 0
+  isEducation: 0
 --- !u!54 &262615923205742125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3717,7 +3718,6 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
-  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!1 &6797670458576224870
