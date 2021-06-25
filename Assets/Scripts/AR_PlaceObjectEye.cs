@@ -26,11 +26,6 @@ public class AR_PlaceObjectEye : MonoBehaviour {
     public bool shadow = false;
 
 
-    private void Update()
-    {
-  
-    }
-
     public void PlaceObject() {
         if (instance == null)
         {

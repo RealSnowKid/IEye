@@ -17,15 +17,23 @@ public class JSONnames : MonoBehaviour
         public string choroid;
         public string retina;
         public string cornea;
-        public string aqueous_humor;
-        public string pupil;
         public string iris;
         public string lens;
-        public string suspensory_ligament;
         public string ciliary_body;
-        public string vitreous_humour;
+        public string vitreous_humor;
         public string optic_nerver;
         public string macula;
+        public string anterior_pole;
+        public string endotheel;
+        public string descemets_layer;
+        public string stroma;
+        public string bowmans_layer;
+        public string epitheel;
+        public string anterior_segment;
+        public string fovea_centralis;
+        public string ora_seratta;
+        public string veins;
+        public string conjunctiva;
     }
 
     // A list of parts
@@ -62,24 +70,40 @@ public class JSONnames : MonoBehaviour
                 return NewPartList.parts[language].retina;
             case "cornea":
                 return NewPartList.parts[language].cornea;
-            case "aqueous_humor":
-                return NewPartList.parts[language].aqueous_humor;
-            case "pupil":
-                return NewPartList.parts[language].pupil;
             case "iris":
                 return NewPartList.parts[language].iris;
             case "lens":
                 return NewPartList.parts[language].lens;
-            case "suspensory_ligament":
-                return NewPartList.parts[language].suspensory_ligament;
             case "ciliary_body":
                 return NewPartList.parts[language].ciliary_body;
-            case "vitreous_humour":
-                return NewPartList.parts[language].vitreous_humour;
+            case "vitreous_humor":
+                return NewPartList.parts[language].vitreous_humor;
             case "optic_nerver":
                 return NewPartList.parts[language].optic_nerver;
             case "macula":
                 return NewPartList.parts[language].macula;
+            case "anterior_pole":
+                return NewPartList.parts[language].anterior_pole;
+            case "endotheel":
+                return NewPartList.parts[language].endotheel;
+            case "descemets_layer":
+                return NewPartList.parts[language].descemets_layer;
+            case "stroma":
+                return NewPartList.parts[language].stroma;
+            case "bowmans_layer":
+                return NewPartList.parts[language].bowmans_layer;
+            case "epitheel":
+                return NewPartList.parts[language].epitheel;
+            case "anterior_segment":
+                return NewPartList.parts[language].anterior_segment;
+            case "fovea_centralis":
+                return NewPartList.parts[language].fovea_centralis;
+            case "ora_serrata":
+                return NewPartList.parts[language].ora_seratta;
+            case "veins":
+                return NewPartList.parts[language].veins;
+            case "conjunctiva":
+                return NewPartList.parts[language].conjunctiva;
             default:
                 if (language != 0)
                 {

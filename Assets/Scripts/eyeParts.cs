@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class eyeParts : MonoBehaviour{
@@ -12,10 +13,15 @@ public class eyeParts : MonoBehaviour{
     private GameObject cam;
     private GameObject UItext;
 
+    private Dropdown Drdown;
+    private JSONnames JSONnames;
+
     public GameObject selectedObject;
     Transform eye = null;
 
     public bool hasShadow = false;
+
+    public bool isEducation;
 
     public void StartManual(bool gravity, bool selectable, bool labels, bool move) {
         hasGravity = gravity;
@@ -33,6 +39,16 @@ public class eyeParts : MonoBehaviour{
     private void Begin() {
         cam = GameObject.Find("AR Camera");
         UItext = GameObject.Find("SelectedObject");
+
+
+        if (SceneManager.GetSceneByBuildIndex(2).isLoaded)
+            Drdown = GameObject.Find("LanguageDropdown").GetComponent<Dropdown>();
+
+        if (Drdown != null)
+        {
+            JSONnames = Drdown.GetComponent<JSONnames>();
+        }
+
         if (hasGravity) {
             foreach (Transform child in transform) {
                 child.GetComponent<Rigidbody>().isKinematic = false;
@@ -71,13 +87,23 @@ public class eyeParts : MonoBehaviour{
                     selectedObject = hit.transform.gameObject;
                     selectedObject.GetComponent<eyePart>().Select();
 
-                    if (showLabels) {
-                        if(selectedObject != null) {
-                            UItext.GetComponent<Text>().text = selectedObject.GetComponent<eyePart>().name;
+                    if (showLabels)
+                    {
+                        if (selectedObject != null)
+                        {
+                            if (Drdown != null)
+                            {
+                                UItext.GetComponent<Text>().text = JSONnames.SetPartsTexts(selectedObject.GetComponent<eyePart>().PartName);
+                            }
+                            else
+                            {
+                                UItext.GetComponent<Text>().text = selectedObject.GetComponent<eyePart>().PartName;
+                            }
                         }
                     }
 
-                    if(areMoveable && Input.touchCount > 0) {
+
+                    if (areMoveable && Input.touchCount > 0) {
                         Touch touch = Input.GetTouch(0);
                         if (touch.phase == TouchPhase.Began) {
                             UItext.GetComponent<Text>().color = Color.green;
