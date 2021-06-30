@@ -19,7 +19,7 @@ An Android Augmented Reality Application to Educate Students about the Eye Anato
 If you are not using Unity version 2020.1.0f1, it can sometimes break the project and it will not load in properly.
 
 ## How To Run the App on Your Android
-1) Download the file from Google Drive - [Link Here](https://drive.google.com/file/d/18Mz0yfo8d951lCZ104Oc-esj92up1FhT/view)
+1) Download the APK file from Google Drive - [Link Here](https://drive.google.com/file/d/18Mz0yfo8d951lCZ104Oc-esj92up1FhT/view)
 2) Put the APK file onto your Android phone, either via USB or Bluetooth
 3) Find the file in your phone's file on your phone
 4) Once you click it, it will prompt you to install, it will ask for permission to install it, because it's from an unknown source, i.e. not downloaded from Google Play. You have to allow it to install, sometimes you would need to go to your phone's setting and allow applications from unknown sources.
